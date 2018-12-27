@@ -39,23 +39,24 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
+        // 创建搜索页，视频列表页和用户详情页
         let searchVC : SearchViewController = SearchViewController()
         let videosVC : VideosViewController = VideosViewController()
         let userInfoVC : UserInfoViewController = UserInfoViewController()
         self.viewControllers = [searchVC, videosVC, userInfoVC]
         
+        // 创建UIPageViewController
         let pageVC : UIPageViewController = UIPageViewController.init(transitionStyle: UIPageViewController.TransitionStyle.scroll, navigationOrientation: UIPageViewController.NavigationOrientation.horizontal, options: nil)
         pageVC.setViewControllers([videosVC], direction: UIPageViewController.NavigationDirection.forward, animated: false, completion: nil)
         pageVC.dataSource = self
         pageVC.delegate = self
         
+        // 将pageVC添加到当前VC
         self.addChild(pageVC)
         self.view.addSubview(pageVC.view)
         pageVC.view.frame = self.view.bounds
         pageVC.didMove(toParent: self)
-        
     }
 
 

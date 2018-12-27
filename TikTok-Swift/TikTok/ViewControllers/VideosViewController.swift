@@ -18,6 +18,7 @@ class VideosViewController: UIViewController,UIPageViewControllerDelegate, UIPag
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.blue
         
+        // 当前类的功能描述
         let desLabel : UILabel = UILabel(frame: self.view.bounds)
         desLabel.numberOfLines = 0
         desLabel.textColor = UIColor.white
@@ -25,6 +26,7 @@ class VideosViewController: UIViewController,UIPageViewControllerDelegate, UIPag
         desLabel.text = "抖音视频列表页\n往右滑到搜索页，往左滑到用户详情页\n上下滑切换视频"
         self.view.addSubview(desLabel)
         
+        // 创建 UIPageViewController
         let pageVC : UIPageViewController = UIPageViewController.init(transitionStyle: UIPageViewController.TransitionStyle.scroll, navigationOrientation: UIPageViewController.NavigationOrientation.vertical, options: nil)
         let videoVC : VideoViewController = VideoViewController()
         videoVC.videoIndex = self.currentIndex
@@ -32,6 +34,7 @@ class VideosViewController: UIViewController,UIPageViewControllerDelegate, UIPag
         pageVC.dataSource = self
         pageVC.delegate = self
         
+        // 将pageVC添加到当前VC
         self.addChild(pageVC)
         self.view.addSubview(pageVC.view)
         pageVC.view.frame = self.view.bounds
@@ -66,14 +69,4 @@ class VideosViewController: UIViewController,UIPageViewControllerDelegate, UIPag
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
